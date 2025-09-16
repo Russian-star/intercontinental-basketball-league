@@ -16,6 +16,7 @@ const Index = () => {
         </div>
         <div className="flex space-x-6">
           <a href="#" className="hover:text-orange-500 transition-colors">Главная</a>
+          <a href="#about" className="hover:text-orange-500 transition-colors">О турнире</a>
           <a href="#teams" className="hover:text-orange-500 transition-colors">Команды</a>
           <a href="#contacts" className="hover:text-orange-500 transition-colors">Контакты</a>
         </div>
@@ -49,9 +50,93 @@ const Index = () => {
             </div>
           </div>
 
-          <Button size="lg" className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4">
+          <Button 
+            size="lg" 
+            className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4"
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             Узнать больше
           </Button>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
+            О турнире
+          </h2>
+          
+          <div className="space-y-12">
+            {/* Introduction */}
+            <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20">
+              <h3 className="text-2xl font-bold text-white mb-6">Введение</h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                В этом уникальном турнире, посвященном наследию великих баскетболистов, тренеров и лучших команд мира, будут бороться за звание чемпиона и невероятные призы! 
+                Межконтинентальная Баскетбольная Лига Кубков предлагает захватывающее соревнование, которое объединяет лучшие таланты со всех континентов!
+              </p>
+            </div>
+
+            {/* Opening Match */}
+            <div className="bg-gradient-to-r from-purple-900/20 to-yellow-500/20 rounded-2xl p-8 border border-purple-500/30">
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <Icon name="Trophy" size={28} className="mr-3 text-gold-400" />
+                Матч открытия
+              </h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                На первый матч в честь открытия приглашены две лучшие команды: <span className="text-purple-400 font-semibold">Лос-Анджелес Лейкерс</span> и <span className="text-blue-400 font-semibold">Реал Мадрид</span>.
+              </p>
+            </div>
+
+            {/* Prize Pool Details */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-gradient-to-r from-green-900/20 to-green-600/20 rounded-2xl p-8 border border-green-500/30">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Icon name="Award" size={28} className="mr-3 text-green-400" />
+                  Призовой фонд
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gold-400 font-semibold">1st place</span>
+                    <span className="text-white font-bold text-xl">$10,000,000</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300 font-semibold">2nd place</span>
+                    <span className="text-white font-bold text-lg">$3,000,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-orange-900/20 to-red-600/20 rounded-2xl p-8 border border-red-500/30">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Icon name="Zap" size={28} className="mr-3 text-orange-400" />
+                  Slam-Dunk Prize Pool
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gold-400 font-semibold">1st</span>
+                    <span className="text-white font-bold">$1,000,000</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">2nd</span>
+                    <span className="text-white">$500,000</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-300">3rd</span>
+                    <span className="text-white">$300,000</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">4th</span>
+                    <span className="text-gray-300">$150,000</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-400">5th</span>
+                    <span className="text-gray-300">$50,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
