@@ -17,7 +17,7 @@ const Index = () => {
         <div className="flex space-x-6">
           <a href="#" className="hover:text-orange-500 transition-colors">Главная</a>
           <a href="#teams" className="hover:text-orange-500 transition-colors">Команды</a>
-          <a href="#" className="hover:text-orange-500 transition-colors">Контакты</a>
+          <a href="#contacts" className="hover:text-orange-500 transition-colors">Контакты</a>
         </div>
       </nav>
 
@@ -149,6 +149,75 @@ const Index = () => {
               <Icon name="Calendar" size={48} className="text-orange-500 mx-auto mb-4" />
               <div className="text-3xl font-bold text-white mb-2">2024</div>
               <div className="text-gray-300">Сезон</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contacts" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
+            Контакты
+          </h2>
+          
+          <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Intercontinental Basketball League of Cups Inc.
+              </h3>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Icon name="Building" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-gray-300 text-sm">EIN</div>
+                    <div className="text-white font-semibold text-lg">36-5149730</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Icon name="Mail" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-gray-300 text-sm">Email</div>
+                    <a href="mailto:interbasketcup@gmail.com" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
+                      interbasketcup@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Icon name="Phone" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-gray-300 text-sm">Телефон</div>
+                    <a href="tel:+17272509790" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
+                      +1 (727) 250-9790
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Icon name="Globe" size={24} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="text-gray-300 text-sm">Статус</div>
+                    <div className="text-white font-semibold text-lg">
+                      Зарегистрированная корпорация
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
