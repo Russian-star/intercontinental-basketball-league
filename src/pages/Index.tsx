@@ -9,7 +9,13 @@ const Index = () => {
       {/* Navigation */}
       <nav className="flex justify-between items-center p-6 border-b border-gray-800">
         <div className="flex items-center space-x-3">
-          <Icon name="Trophy" size={32} className="text-orange-500" />
+          <div className="w-12 h-12 rounded-full overflow-hidden">
+            <img 
+              src="https://cdn.poehali.dev/files/24f2a03b-6914-4f71-99c6-2b8aa1cbab93.jpg" 
+              alt="IBLC Logo" 
+              className="w-full h-full object-cover"
+            />
+          </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
             IBLC
           </span>
@@ -362,10 +368,10 @@ const Index = () => {
                     <Icon name="Globe" size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-gray-300 text-sm">Статус</div>
-                    <div className="text-white font-semibold text-lg">
-                      Зарегистрированная корпорация
-                    </div>
+                    <div className="text-gray-300 text-sm">Веб-сайт</div>
+                    <a href="http://www.iblcup.com" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
+                      www.iblcup.com
+                    </a>
                   </div>
                 </div>
               </div>
