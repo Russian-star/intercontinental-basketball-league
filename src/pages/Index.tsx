@@ -78,9 +78,9 @@ const Index = () => {
               </CardHeader>
               <CardContent className="text-white">
                 <img 
-                  src="https://cdn.poehali.dev/files/86e0f8f0-648d-4a81-9326-7e7aa0de3e27.jpg" 
-                  alt="Lakers Action" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  src="/img/309b765b-a7c8-41dd-a700-c1aef26b93b7.jpg" 
+                  alt="Lakers Logo" 
+                  className="w-full h-48 object-contain rounded-lg mb-4 bg-white/10 p-4"
                 />
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
@@ -110,9 +110,9 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <img 
-                  src="https://cdn.poehali.dev/files/2660c7be-d8b1-4e2a-9927-1119d88d54ea.jpg" 
-                  alt="Real Madrid Action" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  src="/img/29fa3c11-bbbd-4aa3-996e-9ba397c04919.jpg" 
+                  alt="Real Madrid Logo" 
+                  className="w-full h-48 object-contain rounded-lg mb-4 bg-gray-100/50 p-4"
                 />
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
