@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { getTranslation } from "@/utils/translations";
 
 const Index = () => {
+  const [currentLanguage, setCurrentLanguage] = useState('en');
+
+  const t = (key: string) => getTranslation(currentLanguage, key);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
       {/* Navigation */}
@@ -20,12 +27,18 @@ const Index = () => {
             IBLC
           </span>
         </div>
-        <div className="flex space-x-6">
-          <a href="#" className="hover:text-orange-500 transition-colors">Главная</a>
-          <a href="#about" className="hover:text-orange-500 transition-colors">О турнире</a>
-          <a href="#teams" className="hover:text-orange-500 transition-colors">Команды</a>
-          <a href="#application" className="hover:text-orange-500 transition-colors">Заявка</a>
-          <a href="#contacts" className="hover:text-orange-500 transition-colors">Контакты</a>
+        <div className="flex items-center space-x-6">
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-orange-500 transition-colors">{t('home')}</a>
+            <a href="#about" className="hover:text-orange-500 transition-colors">{t('aboutUs')}</a>
+            <a href="#teams" className="hover:text-orange-500 transition-colors">{t('teams')}</a>
+            <a href="#application" className="hover:text-orange-500 transition-colors">{t('application')}</a>
+            <a href="#contacts" className="hover:text-orange-500 transition-colors">{t('contacts')}</a>
+          </div>
+          <LanguageSwitcher 
+            currentLanguage={currentLanguage} 
+            onLanguageChange={setCurrentLanguage} 
+          />
         </div>
       </nav>
 
@@ -37,13 +50,13 @@ const Index = () => {
         />
         <div className="relative z-10 max-w-5xl mx-auto">
           <Badge className="mb-6 bg-orange-500 text-white px-6 py-2 text-lg">
-            ПРЕМИАЛЬНАЯ ЛИГА
+            {t('premiumLeague')}
           </Badge>
           <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-orange-300 to-gold-400 bg-clip-text text-transparent">
-            Intercontinental Basketball League of Cups Inc.
+            {t('heroTitle')}
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Элитный турнир мирового уровня с участием легендарных команд
+            {t('heroDescription')}
           </p>
           
           {/* Prize Pool */}
@@ -52,7 +65,7 @@ const Index = () => {
               <Icon name="DollarSign" size={48} className="text-black" />
               <div className="text-black">
                 <div className="text-3xl font-bold">$13,000,000</div>
-                <div className="text-lg font-semibold">ПРИЗОВОЙ ФОНД</div>
+                <div className="text-lg font-semibold">{t('prizePool')}</div>
               </div>
             </div>
           </div>
@@ -62,7 +75,7 @@ const Index = () => {
             className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4"
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Узнать больше
+            {t('learnMore')}
           </Button>
         </div>
       </section>
@@ -71,16 +84,15 @@ const Index = () => {
       <section id="about" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
-            О турнире
+            {t('aboutTitle')}
           </h2>
           
           <div className="space-y-12">
             {/* Introduction */}
             <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Введение</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">{t('introduction')}</h3>
               <p className="text-gray-300 leading-relaxed text-lg">
-                В этом уникальном турнире, посвященном наследию великих баскетболистов, тренеров и лучших команд мира, будут бороться за звание чемпиона и невероятные призы! 
-                Межконтинентальная Баскетбольная Лига Кубков предлагает захватывающее соревнование, которое объединяет лучшие таланты со всех континентов!
+                {t('introText')}
               </p>
             </div>
 
@@ -88,10 +100,10 @@ const Index = () => {
             <div className="bg-gradient-to-r from-purple-900/20 to-yellow-500/20 rounded-2xl p-8 border border-purple-500/30">
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <Icon name="Trophy" size={28} className="mr-3 text-gold-400" />
-                Матч открытия
+                {t('openingMatch')}
               </h3>
               <p className="text-gray-300 leading-relaxed text-lg">
-                На первый матч в честь открытия приглашены две лучшие команды: <span className="text-purple-400 font-semibold">Лос-Анджелес Лейкерс</span> и <span className="text-blue-400 font-semibold">Реал Мадрид</span>.
+                {t('openingText')} <span className="text-purple-400 font-semibold">Los Angeles Lakers</span> and <span className="text-blue-400 font-semibold">Real Madrid</span>.
               </p>
             </div>
 
@@ -100,15 +112,15 @@ const Index = () => {
               <div className="bg-gradient-to-r from-green-900/20 to-green-600/20 rounded-2xl p-8 border border-green-500/30">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                   <Icon name="Award" size={28} className="mr-3 text-green-400" />
-                  Призовой фонд
+                  {t('prizePoolTitle')}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gold-400 font-semibold">1st place</span>
+                    <span className="text-gold-400 font-semibold">{t('firstPlace')}</span>
                     <span className="text-white font-bold text-xl">$10,000,000</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300 font-semibold">2nd place</span>
+                    <span className="text-gray-300 font-semibold">{t('secondPlace')}</span>
                     <span className="text-white font-bold text-lg">$3,000,000</span>
                   </div>
                 </div>
@@ -117,7 +129,7 @@ const Index = () => {
               <div className="bg-gradient-to-r from-orange-900/20 to-red-600/20 rounded-2xl p-8 border border-red-500/30">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                   <Icon name="Zap" size={28} className="mr-3 text-orange-400" />
-                  Slam-Dunk Prize Pool
+                  {t('slamDunkTitle')}
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
@@ -151,7 +163,7 @@ const Index = () => {
       <section id="teams" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
-            Команды-участники
+            {t('teamsTitle')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -161,7 +173,7 @@ const Index = () => {
                 <div className="flex items-center justify-between">
                   <div className="text-white">
                     <h3 className="text-2xl font-bold mb-2">Los Angeles Lakers</h3>
-                    <p className="text-purple-100">Западная конференция</p>
+                    <p className="text-purple-100">{t('westernConference')}</p>
                   </div>
                   <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center">
                     <Icon name="Zap" size={32} className="text-purple-900" />
@@ -176,11 +188,11 @@ const Index = () => {
                 />
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-purple-200">Чемпионства:</span>
+                    <span className="text-purple-200">{t('championships')}</span>
                     <div className="font-bold text-lg">17</div>
                   </div>
                   <div>
-                    <span className="text-purple-200">Основан:</span>
+                    <span className="text-purple-200">{t('founded')}</span>
                     <div className="font-bold text-lg">1947</div>
                   </div>
                 </div>
@@ -193,7 +205,7 @@ const Index = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Real Madrid</h3>
-                    <p className="text-gray-600">Европейская элита</p>
+                    <p className="text-gray-600">{t('europeanElite')}</p>
                   </div>
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
                     <Icon name="Crown" size={32} className="text-white" />
@@ -208,11 +220,11 @@ const Index = () => {
                 />
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-600">Титулы Евролиги:</span>
+                    <span className="text-gray-600">{t('euroleagueTitles')}</span>
                     <div className="font-bold text-lg">10</div>
                   </div>
                   <div>
-                    <span className="text-gray-600">Основан:</span>
+                    <span className="text-gray-600">{t('founded')}</span>
                     <div className="font-bold text-lg">1932</div>
                   </div>
                 </div>
@@ -225,22 +237,22 @@ const Index = () => {
       {/* Stats Section */}
       <section className="py-20 px-6 bg-gradient-to-r from-orange-500/10 to-gold-400/10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12 text-white">Статистика турнира</h2>
+          <h2 className="text-3xl font-bold mb-12 text-white">{t('tournamentStats')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6">
               <Icon name="Users" size={48} className="text-orange-500 mx-auto mb-4" />
               <div className="text-3xl font-bold text-white mb-2">2</div>
-              <div className="text-gray-300">Команды-участницы</div>
+              <div className="text-gray-300">{t('teams')}</div>
             </div>
             <div className="p-6">
               <Icon name="MapPin" size={48} className="text-orange-500 mx-auto mb-4" />
               <div className="text-3xl font-bold text-white mb-2">2</div>
-              <div className="text-gray-300">Континента</div>
+              <div className="text-gray-300">{t('continents')}</div>
             </div>
             <div className="p-6">
               <Icon name="Calendar" size={48} className="text-orange-500 mx-auto mb-4" />
               <div className="text-3xl font-bold text-white mb-2">2024</div>
-              <div className="text-gray-300">Сезон</div>
+              <div className="text-gray-300">{t('season')}</div>
             </div>
           </div>
         </div>
@@ -250,48 +262,46 @@ const Index = () => {
       <section id="application" className="py-20 px-6 bg-gradient-to-br from-purple-900 to-blue-900">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
-            Принять участие
+            {t('participateTitle')}
           </h2>
           
           <div className="text-center mb-12">
             <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20 max-w-3xl mx-auto">
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center">
                 <Icon name="Calendar" size={28} className="mr-3 text-gold-400" />
-                Турнир на сентябрь 2027 года
+                {t('tournamentDate')}
               </h3>
               <p className="text-gray-300 leading-relaxed text-lg mb-8">
-                Подайте заявку на участие в рассмотрении участия в розыгрыше кубка Межконтинентальной Баскетбольной Лиги на сентябрь 2027 года. 
-                Ваша команда может стать частью этого исторического турнира!
+                {t('applicationText')}
               </p>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-green-500/20 to-green-400/10 rounded-xl p-6 border border-green-500/30">
                   <Icon name="Users" size={32} className="text-green-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Команды</h4>
-                  <p className="text-gray-300 text-sm">Профессиональные баскетбольные команды со всего мира</p>
+                  <h4 className="text-white font-semibold mb-2">{t('teamsCard')}</h4>
+                  <p className="text-gray-300 text-sm">{t('teamsDescription')}</p>
                 </div>
                 
                 <div className="bg-gradient-to-br from-blue-500/20 to-blue-400/10 rounded-xl p-6 border border-blue-500/30">
                   <Icon name="Trophy" size={32} className="text-blue-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Престиж</h4>
-                  <p className="text-gray-300 text-sm">Международное признание и слава</p>
+                  <h4 className="text-white font-semibold mb-2">{t('prestigeCard')}</h4>
+                  <p className="text-gray-300 text-sm">{t('prestigeDescription')}</p>
                 </div>
                 
                 <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-400/10 rounded-xl p-6 border border-yellow-500/30">
                   <Icon name="DollarSign" size={32} className="text-yellow-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">Призы</h4>
-                  <p className="text-gray-300 text-sm">Миллионные призовые фонды</p>
+                  <h4 className="text-white font-semibold mb-2">{t('prizesCard')}</h4>
+                  <p className="text-gray-300 text-sm">{t('prizesDescription')}</p>
                 </div>
               </div>
 
               <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-6 border border-red-500/30 mb-8">
                 <div className="flex items-center justify-center mb-4">
                   <Icon name="Clock" size={24} className="text-red-400 mr-2" />
-                  <span className="text-red-400 font-semibold">Важно!</span>
+                  <span className="text-red-400 font-semibold">{t('important')}</span>
                 </div>
                 <p className="text-gray-300">
-                  Заявки принимаются до <span className="text-white font-semibold">31 декабря 2026 года</span>. 
-                  Количество мест ограничено!
+                  {t('deadlineText')}
                 </p>
               </div>
               
@@ -300,11 +310,11 @@ const Index = () => {
                 className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
                 <Icon name="FileText" size={20} className="mr-2" />
-                Подать заявку
+                {t('applyButton')}
               </Button>
               
               <p className="text-gray-400 text-sm mt-4">
-                * При подаче заявки вы будете перенаправлены к форме регистрации
+                {t('applicationNote')}
               </p>
             </div>
           </div>
@@ -315,13 +325,13 @@ const Index = () => {
       <section id="contacts" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
-            Контакты
+            {t('contactTitle')}
           </h2>
           
           <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-white mb-4">
-                Intercontinental Basketball League of Cups Inc.
+                {t('companyName')}
               </h3>
             </div>
             
@@ -332,7 +342,7 @@ const Index = () => {
                     <Icon name="Building" size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-gray-300 text-sm">EIN</div>
+                    <div className="text-gray-300 text-sm">{t('ein')}</div>
                     <div className="text-white font-semibold text-lg">36-5149730</div>
                   </div>
                 </div>
@@ -342,7 +352,7 @@ const Index = () => {
                     <Icon name="Mail" size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-gray-300 text-sm">Email</div>
+                    <div className="text-gray-300 text-sm">{t('email')}</div>
                     <a href="mailto:interbasketcup@gmail.com" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
                       interbasketcup@gmail.com
                     </a>
@@ -356,7 +366,7 @@ const Index = () => {
                     <Icon name="Phone" size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-gray-300 text-sm">Телефон</div>
+                    <div className="text-gray-300 text-sm">{t('phone')}</div>
                     <a href="tel:+17272509790" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
                       +1 (727) 250-9790
                     </a>
@@ -368,7 +378,7 @@ const Index = () => {
                     <Icon name="Globe" size={24} className="text-white" />
                   </div>
                   <div>
-                    <div className="text-gray-300 text-sm">Веб-сайт</div>
+                    <div className="text-gray-300 text-sm">{t('website')}</div>
                     <a href="http://www.iblcup.com" className="text-white font-semibold text-lg hover:text-orange-400 transition-colors">
                       www.iblcup.com
                     </a>
@@ -387,7 +397,7 @@ const Index = () => {
             <Icon name="Mail" size={20} className="inline mr-2" />
             interbasketcup@gmail.com
           </div>
-          <p>&copy; 2024 Intercontinental Basketball League of Cups Inc. Все права защищены.</p>
+          <p>&copy; 2024 Intercontinental Basketball League of Cups Inc. {t('allRightsReserved')}</p>
         </div>
       </footer>
     </div>
