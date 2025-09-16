@@ -18,6 +18,7 @@ const Index = () => {
           <a href="#" className="hover:text-orange-500 transition-colors">Главная</a>
           <a href="#about" className="hover:text-orange-500 transition-colors">О турнире</a>
           <a href="#teams" className="hover:text-orange-500 transition-colors">Команды</a>
+          <a href="#application" className="hover:text-orange-500 transition-colors">Заявка</a>
           <a href="#contacts" className="hover:text-orange-500 transition-colors">Контакты</a>
         </div>
       </nav>
@@ -234,6 +235,71 @@ const Index = () => {
               <Icon name="Calendar" size={48} className="text-orange-500 mx-auto mb-4" />
               <div className="text-3xl font-bold text-white mb-2">2024</div>
               <div className="text-gray-300">Сезон</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Application Section */}
+      <section id="application" className="py-20 px-6 bg-gradient-to-br from-purple-900 to-blue-900">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-orange-500 to-gold-400 bg-clip-text text-transparent">
+            Принять участие
+          </h2>
+          
+          <div className="text-center mb-12">
+            <div className="bg-gradient-to-r from-orange-500/10 to-gold-400/10 rounded-2xl p-8 border border-orange-500/20 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center justify-center">
+                <Icon name="Calendar" size={28} className="mr-3 text-gold-400" />
+                Турнир на сентябрь 2027 года
+              </h3>
+              <p className="text-gray-300 leading-relaxed text-lg mb-8">
+                Подайте заявку на участие в рассмотрении участия в розыгрыше кубка Межконтинентальной Баскетбольной Лиги на сентябрь 2027 года. 
+                Ваша команда может стать частью этого исторического турнира!
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-green-500/20 to-green-400/10 rounded-xl p-6 border border-green-500/30">
+                  <Icon name="Users" size={32} className="text-green-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Команды</h4>
+                  <p className="text-gray-300 text-sm">Профессиональные баскетбольные команды со всего мира</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-blue-500/20 to-blue-400/10 rounded-xl p-6 border border-blue-500/30">
+                  <Icon name="Trophy" size={32} className="text-blue-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Престиж</h4>
+                  <p className="text-gray-300 text-sm">Международное признание и слава</p>
+                </div>
+                
+                <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-400/10 rounded-xl p-6 border border-yellow-500/30">
+                  <Icon name="DollarSign" size={32} className="text-yellow-400 mx-auto mb-3" />
+                  <h4 className="text-white font-semibold mb-2">Призы</h4>
+                  <p className="text-gray-300 text-sm">Миллионные призовые фонды</p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 rounded-xl p-6 border border-red-500/30 mb-8">
+                <div className="flex items-center justify-center mb-4">
+                  <Icon name="Clock" size={24} className="text-red-400 mr-2" />
+                  <span className="text-red-400 font-semibold">Важно!</span>
+                </div>
+                <p className="text-gray-300">
+                  Заявки принимаются до <span className="text-white font-semibold">31 декабря 2026 года</span>. 
+                  Количество мест ограничено!
+                </p>
+              </div>
+              
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+              >
+                <Icon name="FileText" size={20} className="mr-2" />
+                Подать заявку
+              </Button>
+              
+              <p className="text-gray-400 text-sm mt-4">
+                * При подаче заявки вы будете перенаправлены к форме регистрации
+              </p>
             </div>
           </div>
         </div>
