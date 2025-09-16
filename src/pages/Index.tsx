@@ -9,7 +9,16 @@ import { getTranslation } from "@/utils/translations";
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  const t = (key: string) => getTranslation(currentLanguage, key);
+  const handleLanguageChange = (newLanguage: string) => {
+    console.log('Changing language from', currentLanguage, 'to', newLanguage);
+    setCurrentLanguage(newLanguage);
+  };
+
+  const t = (key: string) => {
+    const translation = getTranslation(currentLanguage, key);
+    console.log(`Translation for "${key}" in "${currentLanguage}":`, translation);
+    return translation;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
@@ -28,16 +37,16 @@ const Index = () => {
           </span>
         </div>
         <div className="flex items-center space-x-6">
-          <div className="flex space-x-6">
-            <a href="#" className="hover:text-orange-500 transition-colors">{t('home')}</a>
-            <a href="#about" className="hover:text-orange-500 transition-colors">{t('aboutUs')}</a>
-            <a href="#teams" className="hover:text-orange-500 transition-colors">{t('teams')}</a>
-            <a href="#application" className="hover:text-orange-500 transition-colors">{t('application')}</a>
-            <a href="#contacts" className="hover:text-orange-500 transition-colors">{t('contacts')}</a>
+          <div className="hidden md:flex space-x-6">
+            <a href="#" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('home')}</a>
+            <a href="#about" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('aboutUs')}</a>
+            <a href="#teams" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('teams')}</a>
+            <a href="#application" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('application')}</a>
+            <a href="#contacts" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('contacts')}</a>
           </div>
           <LanguageSwitcher 
             currentLanguage={currentLanguage} 
-            onLanguageChange={setCurrentLanguage} 
+            onLanguageChange={handleLanguageChange} 
           />
         </div>
       </nav>

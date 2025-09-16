@@ -51,6 +51,7 @@ const LanguageSwitcher = ({ currentLanguage, onLanguageChange }: LanguageSwitche
               <button
                 key={language.code}
                 onClick={() => {
+                  console.log('Language changed to:', language.code);
                   onLanguageChange(language.code);
                   setIsOpen(false);
                 }}
