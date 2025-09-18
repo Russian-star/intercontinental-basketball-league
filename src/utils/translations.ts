@@ -56,6 +56,10 @@ export const translations = {
     deadlineText: "Applications are accepted until December 31, 2026. Number of places is limited!",
     applyButton: "Apply Now",
     applicationNote: "* When submitting an application, you will be redirected to the registration form",
+    
+    // Investment Section
+    investButton: "Participate in this Project (Invest)",
+    donateButton: "Donate to Youth Sports",
 
     // Contact Form Section  
     contactFormTitle: "Get in Touch",
@@ -135,6 +139,10 @@ export const translations = {
     deadlineText: "Заявки принимаются до 31 декабря 2026 года. Количество мест ограничено!",
     applyButton: "Подать заявку",
     applicationNote: "* При подаче заявки вы будете перенаправлены к форме регистрации",
+    
+    // Investment Section
+    investButton: "Участвовать в этом проекте (Инвестировать)",
+    donateButton: "Пожертвовать на детский спорт",
 
     // Contact Form Section
     contactFormTitle: "Связаться с нами",

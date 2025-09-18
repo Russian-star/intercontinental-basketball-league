@@ -316,13 +316,35 @@ const Index = () => {
                 </p>
               </div>
               
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Icon name="FileText" size={20} className="mr-2" />
-                {t('applyButton')}
-              </Button>
+              <div className="space-y-4">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <Icon name="FileText" size={20} className="mr-2" />
+                  {t('applyButton')}
+                </Button>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button 
+                    size="lg"
+                    onClick={() => window.location.href = '/invest'}
+                    className="bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Icon name="TrendingUp" size={20} className="mr-2" />
+                    {t('investButton')}
+                  </Button>
+                  
+                  <Button 
+                    size="lg"
+                    onClick={() => window.location.href = '/donate'}
+                    className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Icon name="Heart" size={20} className="mr-2" />
+                    {t('donateButton')}
+                  </Button>
+                </div>
+              </div>
               
               <p className="text-gray-400 text-sm mt-4">
                 {t('applicationNote')}
