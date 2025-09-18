@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ContactForm from "@/components/ContactForm";
 import { getTranslation } from "@/utils/translations";
 
 const Index = () => {
@@ -42,6 +43,7 @@ const Index = () => {
             <a href="#about" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('aboutUs')}</a>
             <a href="#teams" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('teams')}</a>
             <a href="#application" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('application')}</a>
+            <a href="#contact-form" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('contactFormTitle')}</a>
             <a href="#contacts" className="hover:text-orange-500 transition-colors whitespace-nowrap">{t('contacts')}</a>
           </div>
           <LanguageSwitcher 
@@ -327,6 +329,13 @@ const Index = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact-form" className="py-20 px-6 bg-gradient-to-br from-gray-900 to-black">
+        <div className="max-w-4xl mx-auto">
+          <ContactForm t={t} />
         </div>
       </section>
 

@@ -57,6 +57,16 @@ export const translations = {
     applyButton: "Apply Now",
     applicationNote: "* When submitting an application, you will be redirected to the registration form",
 
+    // Contact Form Section  
+    contactFormTitle: "Get in Touch",
+    contactFormSubtitle: "Have questions about the tournament? We'd love to hear from you!",
+    contactFormName: "Your Name",
+    contactFormEmail: "Your Email",
+    contactFormSubject: "Subject",
+    contactFormMessage: "Message",
+    contactFormSend: "Send Message",
+    contactFormSuccess: "Thank you! Your message has been sent successfully.",
+
     // Contact Section
     contactTitle: "Contact",
     companyName: "Intercontinental Basketball League of Cups Inc.",
@@ -126,6 +136,16 @@ export const translations = {
     applyButton: "Подать заявку",
     applicationNote: "* При подаче заявки вы будете перенаправлены к форме регистрации",
 
+    // Contact Form Section
+    contactFormTitle: "Связаться с нами",
+    contactFormSubtitle: "Есть вопросы о турнире? Мы будем рады услышать от вас!",
+    contactFormName: "Ваше имя",
+    contactFormEmail: "Ваш email",
+    contactFormSubject: "Тема",
+    contactFormMessage: "Сообщение",
+    contactFormSend: "Отправить сообщение",
+    contactFormSuccess: "Спасибо! Ваше сообщение было успешно отправлено.",
+
     // Contact Section
     contactTitle: "Контакты",
     companyName: "Intercontinental Basketball League of Cups Inc.",
@@ -194,6 +214,16 @@ export const translations = {
     deadlineText: "Las aplicaciones se aceptan hasta el 31 de diciembre de 2026. ¡El número de lugares es limitado!",
     applyButton: "Aplicar Ahora",
     applicationNote: "* Al enviar una solicitud, serás redirigido al formulario de registro",
+
+    // Contact Form Section
+    contactFormTitle: "Contáctanos",
+    contactFormSubtitle: "¿Tienes preguntas sobre el torneo? ¡Nos encantaría saber de ti!",
+    contactFormName: "Tu Nombre",
+    contactFormEmail: "Tu Email",
+    contactFormSubject: "Asunto",
+    contactFormMessage: "Mensaje",
+    contactFormSend: "Enviar Mensaje",
+    contactFormSuccess: "¡Gracias! Tu mensaje ha sido enviado exitosamente.",
 
     // Contact Section
     contactTitle: "Contacto",
