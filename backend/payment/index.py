@@ -1,6 +1,8 @@
 import json
 import os
 import requests
+import psycopg2
+import psycopg2.extras
 from typing import Dict, Any, Optional
 from pydantic import BaseModel, Field, ValidationError
 
@@ -90,6 +92,22 @@ def handler(event, context):
                 receipt_email=payment_req.customer_email if payment_req.customer_email else None
             )
             
+            # Save payment to database
+            try:
+                save_payment_to_db({
+                    'payment_intent_id': intent.id,
+                    'amount': payment_req.amount,
+                    'currency': payment_req.currency,
+                    'payment_type': payment_req.payment_type,
+                    'customer_email': payment_req.customer_email,
+                    'customer_name': payment_req.customer_name,
+                    'description': payment_req.description,
+                    'metadata': json.dumps(metadata) if metadata else None,
+                    'status': intent.status
+                })
+            except Exception as db_error:
+                print(f"Database save failed: {db_error}")
+            
             # Отправляем email уведомление
             try:
                 send_payment_notification({
@@ -153,6 +171,36 @@ def handler(event, context):
                     'request_id': context.request_id
                 })
             }
+
+def save_payment_to_db(payment_data):
+    '''Сохраняет платеж в базу данных'''
+    try:
+        database_url = os.environ.get('DATABASE_URL')
+        if not database_url:
+            raise Exception("DATABASE_URL not configured")
+        
+        with psycopg2.connect(database_url) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    INSERT INTO payments (
+                        payment_intent_id, amount, currency, payment_type,
+                        customer_email, customer_name, description, metadata, status
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """, (
+                    payment_data['payment_intent_id'],
+                    payment_data['amount'],
+                    payment_data['currency'],
+                    payment_data['payment_type'],
+                    payment_data.get('customer_email'),
+                    payment_data.get('customer_name'),
+                    payment_data.get('description'),
+                    payment_data.get('metadata'),
+                    payment_data['status']
+                ))
+                conn.commit()
+    except Exception as e:
+        print(f"Database error: {e}")
+        raise
 
 def send_payment_notification(payment_data):
     '''Отправляет уведомление о платеже через email сервис'''

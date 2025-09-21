@@ -1,0 +1,37 @@
+{
+  "tests": [
+    {
+      "name": "Test analytics summary endpoint",
+      "method": "GET",
+      "path": "/?endpoint=summary",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "total_payments": "number",
+        "total_amount_usd": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test payments list endpoint",
+      "method": "GET", 
+      "path": "/?endpoint=payments&limit=10",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "payments": "array",
+        "total": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test chart data endpoint",
+      "method": "GET",
+      "path": "/?endpoint=charts&days=7",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "daily_payments": "array",
+        "payment_types": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
