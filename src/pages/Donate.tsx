@@ -3,11 +3,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useStripe } from '@/hooks/useStripe';
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
+  const { createTestPayment, isLoading } = useStripe();
 
   const donationOptions = [
     { amount: 25, title: 'Мяч', description: 'Новый баскетбольный мяч для тренировок', icon: 'Circle' },
@@ -19,15 +20,41 @@ const Donate = () => {
   ];
 
   const handleDonation = async () => {
-    setIsProcessing(true);
     const amount = selectedAmount || parseInt(customAmount);
     
-    // Симуляция обработки платежа
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Здесь будет интеграция с реальной платежной системой
-    alert(`Пожертвование на сумму $${amount.toLocaleString()} обрабатывается. Спасибо за вашу поддержку детского спорта!`);
-    setIsProcessing(false);
+    try {
+      const result = await createTestPayment({
+        amount: amount * 100, // Stripe принимает сумму в центах
+        currency: 'usd',
+        payment_type: 'donation',
+        description: getDonationDescription(amount),
+        metadata: {
+          donation_type: getDonationType(amount),
+          amount_usd: amount.toString()
+        }
+      });
+
+      if (result.success) {
+        setTimeout(() => {
+          alert(`💝 Пожертвование на сумму $${amount.toLocaleString()} успешно принято!\n\nID платежа: ${result.payment_intent_id}\n\nСпасибо за вашу поддержку детского спорта! Ваша помощь очень важна для юных спортсменов.`);
+        }, 500);
+      } else {
+        alert(`❌ Ошибка обработки пожертвования: ${result.error}`);
+      }
+    } catch (error) {
+      alert('❌ Произошла ошибка при обработке пожертвования. Попробуйте еще раз.');
+      console.error('Donation error:', error);
+    }
+  };
+
+  const getDonationDescription = (amount: number): string => {
+    const option = donationOptions.find(o => o.amount === amount);
+    return option ? `${option.title} - ${option.description}` : `Пожертвование $${amount.toLocaleString()}`;
+  };
+
+  const getDonationType = (amount: number): string => {
+    const option = donationOptions.find(o => o.amount === amount);
+    return option ? option.title : 'Custom';
   };
 
   const finalAmount = selectedAmount || (customAmount ? parseInt(customAmount) : 0);
@@ -195,10 +222,10 @@ const Donate = () => {
             <Button
               size="lg"
               onClick={handleDonation}
-              disabled={finalAmount === 0 || isProcessing}
+              disabled={finalAmount === 0 || isLoading}
               className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-bold text-xl px-12 py-6 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              {isProcessing ? (
+              {isLoading ? (
                 <div className="flex items-center space-x-2">
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Обработка...</span>

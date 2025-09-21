@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useStripe } from '@/hooks/useStripe';
 
 const Invest = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState('');
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const { createTestPayment, isLoading } = useStripe();
 
   const investmentOptions = [
     { amount: 1000, title: 'Начальный', description: 'Базовое участие в проекте', benefits: ['Сертификат участника', 'Отчеты о проекте'] },
@@ -16,16 +18,43 @@ const Invest = () => {
     { amount: 25000, title: 'Платиновый', description: 'Стратегическое партнерство', benefits: ['Место в совете директоров', 'Максимальные привилегии', 'Индивидуальные условия'] }
   ];
 
+  const getInvestmentDescription = (amount: number): string => {
+    const tier = investmentOptions.find(t => t.amount === amount);
+    return tier ? `${tier.title} - ${tier.description}` : `Инвестиция $${amount.toLocaleString()}`;
+  };
+
+  const getInvestmentTier = (amount: number): string => {
+    const tier = investmentOptions.find(t => t.amount === amount);
+    return tier ? tier.title : 'Custom';
+  };
+
   const handlePayment = async () => {
-    setIsProcessing(true);
     const amount = selectedAmount || parseInt(customAmount);
     
-    // Симуляция обработки платежа
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Здесь будет интеграция с реальной платежной системой
-    alert(`Платеж на сумму $${amount.toLocaleString()} обрабатывается. Вы будете перенаправлены к платежной системе.`);
-    setIsProcessing(false);
+    try {
+      const result = await createTestPayment({
+        amount: amount * 100, // Stripe принимает сумму в центах
+        currency: 'usd',
+        payment_type: 'investment',
+        description: getInvestmentDescription(amount),
+        metadata: {
+          investment_tier: getInvestmentTier(amount),
+          amount_usd: amount.toString()
+        }
+      });
+
+      if (result.success) {
+        setPaymentSuccess(true);
+        setTimeout(() => {
+          alert(`✅ Инвестиция на сумму $${amount.toLocaleString()} успешно принята!\n\nID платежа: ${result.payment_intent_id}\n\nВ ближайшее время с вами свяжется наш менеджер для оформления инвестиционного соглашения.`);
+        }, 500);
+      } else {
+        alert(`❌ Ошибка обработки платежа: ${result.error}`);
+      }
+    } catch (error) {
+      alert('❌ Произошла ошибка при обработке платежа. Попробуйте еще раз.');
+      console.error('Payment error:', error);
+    }
   };
 
   const finalAmount = selectedAmount || (customAmount ? parseInt(customAmount) : 0);
@@ -171,10 +200,10 @@ const Invest = () => {
             <Button
               size="lg"
               onClick={handlePayment}
-              disabled={finalAmount === 0 || isProcessing}
+              disabled={finalAmount === 0 || isLoading}
               className="bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-bold text-xl px-12 py-6 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              {isProcessing ? (
+              {isLoading ? (
                 <div className="flex items-center space-x-2">
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Обработка...</span>
