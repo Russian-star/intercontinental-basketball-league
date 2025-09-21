@@ -1,0 +1,50 @@
+{
+  "tests": [
+    {
+      "name": "Test email service status",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "status": "string",
+        "sendgrid_configured": "boolean"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test send simple email",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "to_email": "test@example.com",
+        "subject": "Test Email",
+        "content": "This is a test email from payment system",
+        "content_type": "text/plain"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test payment notification",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "action": "payment_notification",
+        "payment_id": "pi_test123",
+        "amount": 5000,
+        "currency": "usd",
+        "payment_type": "donation",
+        "payer_email": "donor@example.com",
+        "description": "Test donation"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

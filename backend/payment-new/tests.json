@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "Test payment service status",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "status": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test create donation payment",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "amount": 5000,
+        "currency": "usd",
+        "payment_type": "donation",
+        "description": "Test donation payment",
+        "customer_email": "test@example.com"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "client_secret": "string",
+        "payment_intent_id": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

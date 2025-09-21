@@ -38,7 +38,7 @@ export const useStripe = () => {
   // Создание платежного намерения на сервере
   const createPaymentIntent = async (paymentData: PaymentData) => {
     try {
-      const response = await fetch('https://functions.poehali.dev/3dc4d453-ef5d-4235-9ffe-03bd2e14b23b', {
+      const response = await fetch('https://functions.poehali.dev/cefde31e-d07f-4343-9318-1bf393b6f5e1', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
