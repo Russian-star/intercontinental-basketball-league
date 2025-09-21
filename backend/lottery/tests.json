@@ -39,6 +39,19 @@
         "lottery_round": "number"
       },
       "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test conduct draw",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "action": "draw_winners"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean"
+      },
+      "bodyMatcher": "partial"
     }
   ]
 }

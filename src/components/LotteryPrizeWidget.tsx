@@ -197,6 +197,7 @@ const LotteryPrizeWidget: React.FC<LotteryPrizeWidgetProps> = ({
               <p>• За каждые $10 - 1 лотерейный билет</p>
               <p>• 14% от всех инвестиций = призовой фонд</p>
               <p>• Розыгрыш проводится прозрачно</p>
+              <p>• <a href="/lottery" className="text-blue-700 underline font-medium">Смотреть розыгрыш →</a></p>
             </div>
           </div>
         </div>

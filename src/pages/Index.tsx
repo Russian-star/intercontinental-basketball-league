@@ -104,6 +104,15 @@ const Index = () => {
               <Icon name="BarChart3" size={20} className="mr-2" />
               Дашборд
             </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-orange-300 text-orange-300 hover:bg-orange-300 hover:text-black text-lg px-8 py-4"
+              onClick={() => window.location.href = '/lottery'}
+            >
+              <Icon name="Trophy" size={20} className="mr-2" />
+              Розыгрыш
+            </Button>
           </div>
         </div>
       </section>

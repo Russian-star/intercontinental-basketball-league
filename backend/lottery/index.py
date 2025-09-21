@@ -351,13 +351,144 @@ def get_lottery_winners(cursor, round_num=0):
 
 def conduct_lottery_draw(cursor, conn, data):
     '''Проводит розыгрыш лотереи'''
-    # This would be called manually or scheduled
-    # Implementation for actual lottery draw logic
-    # For now, return placeholder
-    return {
-        'success': True,
-        'message': 'Lottery draw functionality - coming soon'
-    }
+    try:
+        # Get current lottery round
+        cursor.execute("""
+            SELECT id, current_round, total_investment_amount, 
+                   prize_fund_1, prize_fund_2, prize_fund_3
+            FROM lottery 
+            WHERE is_active = true 
+            ORDER BY current_round DESC 
+            LIMIT 1
+        """)
+        
+        lottery = cursor.fetchone()
+        if not lottery:
+            raise ValueError("No active lottery found")
+        
+        current_round = lottery['current_round']
+        
+        # Check if draw already conducted
+        cursor.execute("""
+            SELECT COUNT(*) as winner_count
+            FROM lottery_winners 
+            WHERE lottery_round = %s
+        """, (current_round,))
+        
+        existing_winners = cursor.fetchone()
+        if existing_winners['winner_count'] > 0:
+            raise ValueError("Draw already conducted for this round")
+        
+        # Get all participants for current round
+        cursor.execute("""
+            SELECT id, participant_email, investment_amount, ticket_numbers
+            FROM lottery_participants 
+            WHERE lottery_round = %s
+            ORDER BY id
+        """, (current_round,))
+        
+        participants = cursor.fetchall()
+        if not participants:
+            raise ValueError("No participants found for this round")
+        
+        # Collect all tickets
+        all_tickets = []
+        ticket_to_participant = {}
+        
+        for participant in participants:
+            if participant['ticket_numbers']:
+                tickets = participant['ticket_numbers'].split(',')
+                for ticket in tickets:
+                    ticket = ticket.strip()
+                    all_tickets.append(ticket)
+                    ticket_to_participant[ticket] = participant
+        
+        if len(all_tickets) == 0:
+            raise ValueError("No tickets found for drawing")
+        
+        # Conduct draw for 3 prizes
+        winners = []
+        used_tickets = set()
+        
+        prizes = [
+            {'position': 1, 'amount': lottery['prize_fund_1']},
+            {'position': 2, 'amount': lottery['prize_fund_2']},
+            {'position': 3, 'amount': lottery['prize_fund_3']}
+        ]
+        
+        for prize in prizes:
+            # Get available tickets (not yet used)
+            available_tickets = [t for t in all_tickets if t not in used_tickets]
+            if not available_tickets:
+                break
+            
+            # Select random winning ticket
+            import secrets
+            winning_ticket = secrets.choice(available_tickets)
+            used_tickets.add(winning_ticket)
+            
+            # Find participant who owns the winning ticket
+            winner_participant = ticket_to_participant[winning_ticket]
+            
+            # Insert winner record
+            cursor.execute("""
+                INSERT INTO lottery_winners (
+                    lottery_round, participant_id, prize_position, 
+                    prize_amount, winning_ticket, claimed
+                ) VALUES (%s, %s, %s, %s, %s, %s)
+                RETURNING id
+            """, (
+                current_round,
+                winner_participant['id'],
+                prize['position'],
+                prize['amount'],
+                winning_ticket,
+                False
+            ))
+            
+            winner_id = cursor.fetchone()['id']
+            
+            winners.append({
+                'id': winner_id,
+                'position': prize['position'],
+                'prize_usd': prize['amount'] / 100,
+                'winning_ticket': winning_ticket,
+                'winner_email': winner_participant['participant_email'],
+                'investment_usd': winner_participant['investment_amount'] / 100
+            })
+        
+        # Mark lottery round as completed
+        cursor.execute("""
+            UPDATE lottery 
+            SET 
+                draw_date = CURRENT_TIMESTAMP,
+                is_active = false,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE id = %s
+        """, (lottery['id'],))
+        
+        # Create new lottery round for future
+        cursor.execute("""
+            INSERT INTO lottery (
+                total_investment_amount, prize_fund_1, prize_fund_2, prize_fund_3,
+                total_participants, current_round, is_active
+            ) VALUES (0, 0, 0, 0, 0, %s, true)
+        """, (current_round + 1,))
+        
+        conn.commit()
+        
+        return {
+            'success': True,
+            'round': current_round,
+            'winners': winners,
+            'total_participants': len(participants),
+            'total_tickets': len(all_tickets),
+            'message': f'Розыгрыш раунда {current_round} успешно проведен! Выбрано {len(winners)} победителей.'
+        }
+        
+    except Exception as e:
+        conn.rollback()
+        raise Exception(f"Error conducting lottery draw: {str(e)}")
 
 def update_prize_fund(cursor, conn, data):
     '''Обновляет призовой фонд (административная функция)'''
