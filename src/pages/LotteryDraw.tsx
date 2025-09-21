@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
+import urls from '../../backend/func2url.json';
 
 interface LotteryStatus {
   current_round: number;
@@ -123,6 +124,40 @@ const LotteryDraw: React.FC = () => {
     return interval;
   };
 
+  const sendWinnerNotifications = async (winners: Winner[]) => {
+    try {
+      for (const winner of winners) {
+        const message = `🎉 Поздравляем с ${winner.position === 1 ? '1-м' : winner.position === 2 ? '2-м' : '3-м'} местом!
+
+Ваш выигрышный билет: ${winner.winning_ticket}
+Размер приза: $${winner.prize_usd.toFixed(2)}
+Раунд: ${lotteryStatus?.current_round}
+
+Благодаря вашей инвестиции в размере $${winner.investment_usd} вы стали победителем нашей благотворительной лотереи!`;
+
+        const response = await fetch(urls['email-notify'], {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to_email: winner.winner_email,
+            subject: `🎉 Поздравляем! Вы выиграли ${winner.position === 1 ? '1-е' : winner.position === 2 ? '2-е' : '3-е'} место в лотерее!`,
+            message
+          })
+        });
+
+        if (!response.ok) {
+          console.error(`Failed to send email to ${winner.winner_email}:`, await response.text());
+        } else {
+          console.log(`Email notification sent successfully to ${winner.winner_email}`);
+        }
+      }
+    } catch (error) {
+      console.error('Error sending winner notifications:', error);
+    }
+  };
+
   const conductDraw = async () => {
     if (participants.length === 0) {
       setError('Нет участников для проведения розыгрыша');
@@ -181,6 +216,9 @@ const LotteryDraw: React.FC = () => {
       });
       
       setWinners(selectedWinners);
+      
+      // Send email notifications to winners
+      await sendWinnerNotifications(selectedWinners);
       
     } catch (err) {
       setError('Ошибка при проведении розыгрыша');

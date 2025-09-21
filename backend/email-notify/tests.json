@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Test email notification endpoint",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "to_email": "test@example.com",
+        "subject": "Test Subject",
+        "message": "Test message content"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean",
+        "message": "string",
+        "to": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing email parameter",
+      "method": "POST", 
+      "path": "/",
+      "body": {
+        "subject": "Test Subject",
+        "message": "Test message"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
