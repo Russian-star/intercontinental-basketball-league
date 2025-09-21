@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useStripe } from '@/hooks/useStripe';
+import LotteryPrizeWidget from '@/components/LotteryPrizeWidget';
 
 const Invest = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -12,10 +13,10 @@ const Invest = () => {
   const { createTestPayment, isLoading } = useStripe();
 
   const investmentOptions = [
-    { amount: 1000, title: 'Начальный', description: 'Базовое участие в проекте', benefits: ['Сертификат участника', 'Отчеты о проекте'] },
-    { amount: 5000, title: 'Стандартный', description: 'Активное участие', benefits: ['VIP приглашения', 'Эксклюзивные материалы', 'Личная консультация'] },
-    { amount: 10000, title: 'Премиум', description: 'Полноценное партнерство', benefits: ['Участие в управлении', 'Приоритетные права', 'Персональный менеджер'] },
-    { amount: 25000, title: 'Платиновый', description: 'Стратегическое партнерство', benefits: ['Место в совете директоров', 'Максимальные привилегии', 'Индивидуальные условия'] }
+    { amount: 1000, title: 'Начальный', description: 'Базовое участие в проекте', benefits: ['Сертификат участника', '1 лотерейный билет', 'Отчеты о проекте'] },
+    { amount: 5000, title: 'Стандартный', description: 'Активное участие', benefits: ['VIP приглашения', '5 лотерейных билетов', 'Эксклюзивные материалы', 'Личная консультация'] },
+    { amount: 10000, title: 'Премиум', description: 'Полноценное партнерство', benefits: ['Участие в управлении', '10 лотерейных билетов', 'Приоритетные права', 'Персональный менеджер'] },
+    { amount: 25000, title: 'Платиновый', description: 'Стратегическое партнерство', benefits: ['Место в совете директоров', '25 лотерейных билетов', 'Максимальные привилегии', 'Индивидуальные условия'] }
   ];
 
   const getInvestmentDescription = (amount: number): string => {
@@ -92,14 +93,19 @@ const Invest = () => {
           {/* Hero Section */}
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-green-500 text-white px-4 py-2">
-              Инвестиционная возможность
+              Благотворительная инвестиция
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 via-emerald-300 to-teal-400 bg-clip-text text-transparent">
-              Инвестируйте в будущее спорта
+              Инвестируйте и выиграйте
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Станьте частью революционного баскетбольного турнира. Ваши инвестиции помогут создать крупнейшее спортивное событие года с призовым фондом $13,000,000.
+              Каждая инвестиция участвует в мировом розыгрыше! Поддержите проект и получите шанс выиграть до 10% от общего фонда. Чем больше инвестиций - тем больше призы!
             </p>
+          </div>
+
+          {/* Lottery Prize Widget */}
+          <div className="mb-8">
+            <LotteryPrizeWidget className="max-w-md mx-auto" />
           </div>
 
           {/* Investment Options */}
@@ -144,7 +150,7 @@ const Invest = () => {
           <Card className="bg-gray-800 border-gray-600 mb-8">
             <CardHeader>
               <CardTitle className="text-white">Индивидуальная сумма</CardTitle>
-              <p className="text-gray-300">Укажите собственную сумму инвестиций</p>
+              <p className="text-gray-300">Укажите собственную сумму инвестиций (за каждые $10 = 1 лотерейный билет)</p>
             </CardHeader>
             <CardContent>
               <div className="flex items-center space-x-2">

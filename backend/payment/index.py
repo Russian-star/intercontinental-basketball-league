@@ -94,7 +94,7 @@ def handler(event, context):
             
             # Save payment to database
             try:
-                save_payment_to_db({
+                payment_db_id = save_payment_to_db({
                     'payment_intent_id': intent.id,
                     'amount': payment_req.amount,
                     'currency': payment_req.currency,
@@ -105,6 +105,18 @@ def handler(event, context):
                     'metadata': json.dumps(metadata) if metadata else None,
                     'status': intent.status
                 })
+                
+                # Add to lottery if it's an investment
+                if payment_req.payment_type == 'investment' and payment_db_id:
+                    try:
+                        add_to_lottery({
+                            'payment_id': payment_db_id,
+                            'amount': payment_req.amount,
+                            'email': payment_req.customer_email
+                        })
+                    except Exception as lottery_error:
+                        print(f"Lottery registration failed: {lottery_error}")
+                        
             except Exception as db_error:
                 print(f"Database save failed: {db_error}")
             
@@ -186,6 +198,7 @@ def save_payment_to_db(payment_data):
                         payment_intent_id, amount, currency, payment_type,
                         customer_email, customer_name, description, metadata, status
                     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    RETURNING id
                 """, (
                     payment_data['payment_intent_id'],
                     payment_data['amount'],
@@ -197,10 +210,37 @@ def save_payment_to_db(payment_data):
                     payment_data.get('metadata'),
                     payment_data['status']
                 ))
+                payment_id = cursor.fetchone()[0]
                 conn.commit()
+                return payment_id
     except Exception as e:
         print(f"Database error: {e}")
         raise
+
+def add_to_lottery(lottery_data):
+    '''Добавляет платеж в лотерею'''
+    try:
+        lottery_url = 'https://functions.poehali.dev/84895621-7397-4c97-a683-4c67fcfd0bad'
+        
+        payload = {
+            'action': 'add_participant',
+            'payment_id': lottery_data['payment_id'],
+            'amount': lottery_data['amount'],
+            'email': lottery_data.get('email')
+        }
+        
+        response = requests.post(
+            lottery_url,
+            json=payload,
+            headers={'Content-Type': 'application/json'},
+            timeout=10
+        )
+        
+        return response.json() if response.status_code == 200 else None
+        
+    except Exception as e:
+        print(f"Failed to add to lottery: {e}")
+        return None
 
 def send_payment_notification(payment_data):
     '''Отправляет уведомление о платеже через email сервис'''

@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Test lottery status endpoint",
+      "method": "GET",
+      "path": "/?action=status",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "current_round": "number",
+        "total_investment_usd": "number",
+        "prize_fund_1_usd": "number"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test lottery participants endpoint",
+      "method": "GET",
+      "path": "/?action=participants",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "round": "number",
+        "participants": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test add participant",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "action": "add_participant",
+        "payment_id": 1,
+        "amount": 5000,
+        "email": "test@example.com"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": "boolean",
+        "lottery_round": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
