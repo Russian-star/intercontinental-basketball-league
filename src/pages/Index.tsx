@@ -85,27 +85,10 @@ const Index = () => {
 
 
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button 
               size="lg" 
-              className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4"
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {t('learnMore')}
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black text-lg px-8 py-4"
-              onClick={() => window.location.href = '/dashboard'}
-            >
-              <Icon name="BarChart3" size={20} className="mr-2" />
-              Дашборд
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-orange-300 text-orange-300 hover:bg-orange-300 hover:text-black text-lg px-8 py-4"
+              className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
               onClick={() => window.location.href = '/lottery'}
             >
               <Icon name="Trophy" size={20} className="mr-2" />
@@ -349,9 +332,10 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => window.location.href = '/lottery'}
                 >
-                  <Icon name="FileText" size={20} className="mr-2" />
-                  {t('applyButton')}
+                  <Icon name="Trophy" size={20} className="mr-2" />
+                  Розыгрыш
                 </Button>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

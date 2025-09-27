@@ -9,6 +9,7 @@ import Invest from "./pages/Invest";
 import Donate from "./pages/Donate";
 import Dashboard from "./pages/Dashboard";
 import LotteryDraw from "./pages/LotteryDraw";
+import Lottery from "./pages/Lottery";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
@@ -25,7 +26,7 @@ const App = () => (
           <Route path="/invest" element={<Invest />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/lottery" element={<LotteryDraw />} />
+          <Route path="/lottery" element={<Lottery />} />
           <Route path="/team/:teamId" element={<Team />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
