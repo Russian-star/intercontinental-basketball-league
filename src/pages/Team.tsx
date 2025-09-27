@@ -214,7 +214,7 @@ const teamsData: Record<string, TeamData> = {
         height: '178 см',
         weight: '81 кг',
         description: 'Быстрый и техничный аргентинский разыгрывающий.',
-        photo: '/img/a2b6e470-bda4-40a2-8770-07048fa4af69.jpg'
+        photo: '/img/cfa8d05d-59a5-44e1-bd06-5241e8e1d1b1.jpg'
       },
       {
         id: 6,
