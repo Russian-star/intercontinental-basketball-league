@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
@@ -53,7 +54,7 @@ const teamsData: Record<string, TeamData> = {
         height: '206 см',
         weight: '113 кг',
         description: 'Четырехкратный чемпион НБА, один из величайших игроков всех времен.',
-        photo: '/img/278ce9d3-1d4e-4443-bba1-225dfb3bf940.jpg'
+        photo: '/img/acbc43a8-344e-40c0-bd5d-ed0ad7a2c08d.jpg'
       },
       {
         id: 2,
@@ -64,7 +65,7 @@ const teamsData: Record<string, TeamData> = {
         height: '208 см',
         weight: '115 кг',
         description: 'Доминирующий в краске игрок с отличными защитными навыками.',
-        photo: '/img/ac587565-a5c0-4468-b04d-fd5168edc273.jpg'
+        photo: '/img/5a37c0e5-cca5-4cd8-bb81-39773eb7f00c.jpg'
       },
       {
         id: 3,
@@ -75,7 +76,7 @@ const teamsData: Record<string, TeamData> = {
         height: '196 см',
         weight: '89 кг',
         description: 'Молодой талантливый защитник с отличным броском.',
-        photo: '/img/49ae587d-4ea3-43f0-ace1-bc49608f849c.jpg'
+        photo: '/img/4046c76b-a87e-4887-9ebc-5e91025edb38.jpg'
       },
       {
         id: 4,
@@ -86,7 +87,7 @@ const teamsData: Record<string, TeamData> = {
         height: '193 см',
         weight: '88 кг',
         description: 'Опытный разыгрывающий с отличным трехочковым броском.',
-        photo: '/img/278ce9d3-1d4e-4443-bba1-225dfb3bf940.jpg'
+        photo: '/img/2d7dc742-4215-4e28-88e2-91f96e907198.jpg'
       },
       {
         id: 5,
@@ -97,7 +98,40 @@ const teamsData: Record<string, TeamData> = {
         height: '203 см',
         weight: '104 кг',
         description: 'Универсальный форвард с хорошими атакующими навыками.',
-        photo: '/img/ac587565-a5c0-4468-b04d-fd5168edc273.jpg'
+        photo: '/img/291774da-2aab-4a24-ba83-9c32f443996d.jpg'
+      },
+      {
+        id: 6,
+        name: 'Кристиан Вуд',
+        position: 'Центровой',
+        number: 35,
+        age: 29,
+        height: '211 см',
+        weight: '98 кг',
+        description: 'Мобильный центровой с хорошим броском с дистанции.',
+        photo: '/img/95cdff7c-7d77-4b48-b882-b1f9da14c4a2.jpg'
+      },
+      {
+        id: 7,
+        name: 'Гэйб Винсент',
+        position: 'Защитник',
+        number: 7,
+        age: 27,
+        height: '188 см',
+        weight: '88 кг',
+        description: 'Надежный защитник с опытом игры в плей-офф.',
+        photo: '/img/be05a9d3-0737-4ab8-858d-578207c023b0.jpg'
+      },
+      {
+        id: 8,
+        name: 'Кэм Реддиш',
+        position: 'Форвард',
+        number: 17,
+        age: 25,
+        height: '203 см',
+        weight: '95 кг',
+        description: 'Перспективный крыловой игрок с атлетичными данными.',
+        photo: '/img/eeb80700-699a-47a5-a6ee-beb9e21fe562.jpg'
       }
     ],
     coaches: [
@@ -106,7 +140,7 @@ const teamsData: Record<string, TeamData> = {
         name: 'Дарвин Хэм',
         position: 'Главный тренер',
         experience: '2 года в НБА',
-        photo: '/img/440eb061-6c1e-4e5b-9c92-e921807bd6df.jpg',
+        photo: '/img/d3481dc8-e332-4e6c-b7e7-34a30908ef16.jpg',
         description: 'Опытный тренер с большим игровым опытом в НБА.'
       },
       {
@@ -114,7 +148,7 @@ const teamsData: Record<string, TeamData> = {
         name: 'Фил Хэнди',
         position: 'Помощник тренера',
         experience: '15 лет',
-        photo: '/img/440eb061-6c1e-4e5b-9c92-e921807bd6df.jpg',
+        photo: '/img/8ddf65ce-7e82-4d5b-9b0f-3cb473a3a4b6.jpg',
         description: 'Специалист по развитию игроков и тактической подготовке.'
       }
     ]
@@ -129,17 +163,6 @@ const teamsData: Record<string, TeamData> = {
     players: [
       {
         id: 1,
-        name: 'Фасеку Кауфманн',
-        position: 'Центровой',
-        number: 16,
-        age: 22,
-        height: '208 см',
-        weight: '118 кг',
-        description: 'Молодой перспективный центровой с отличной физикой.',
-        photo: '/img/a55e998d-b6e8-461e-a33b-47ec82f21b79.jpg'
-      },
-      {
-        id: 2,
         name: 'Серхио Льюлл',
         position: 'Разыгрывающий',
         number: 23,
@@ -147,10 +170,10 @@ const teamsData: Record<string, TeamData> = {
         height: '190 см',
         weight: '83 кг',
         description: 'Капитан команды, легенда Реал Мадрида.',
-        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
+        photo: '/img/140cab67-9a41-4467-9ba0-c1055a68a949.jpg'
       },
       {
-        id: 3,
+        id: 2,
         name: 'Уолтер Тавареш',
         position: 'Центровой',
         number: 22,
@@ -158,10 +181,10 @@ const teamsData: Record<string, TeamData> = {
         height: '221 см',
         weight: '118 кг',
         description: 'Доминирующий центровой, один из самых высоких игроков.',
-        photo: '/img/a55e998d-b6e8-461e-a33b-47ec82f21b79.jpg'
+        photo: '/img/773aa3ff-cfb7-4d1e-8972-3c69e97071a6.jpg'
       },
       {
-        id: 4,
+        id: 3,
         name: 'Габриэль Дек',
         position: 'Форвард',
         number: 20,
@@ -169,10 +192,10 @@ const teamsData: Record<string, TeamData> = {
         height: '198 см',
         weight: '104 кг',
         description: 'Аргентинский форвард с отличными атакующими качествами.',
-        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
+        photo: '/img/c17c7e43-c389-4398-ae37-d9612d4de7bd.jpg'
       },
       {
-        id: 5,
+        id: 4,
         name: 'Марио Хезоня',
         position: 'Форвард',
         number: 8,
@@ -180,7 +203,40 @@ const teamsData: Record<string, TeamData> = {
         height: '203 см',
         weight: '102 кг',
         description: 'Опытный европейский форвард с хорошим броском.',
-        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
+        photo: '/img/2c0414f5-44c8-4a11-853f-0dcde0d8217f.jpg'
+      },
+      {
+        id: 5,
+        name: 'Факундо Кампаццо',
+        position: 'Разыгрывающий',
+        number: 11,
+        age: 33,
+        height: '178 см',
+        weight: '81 кг',
+        description: 'Быстрый и техничный аргентинский разыгрывающий.',
+        photo: '/img/a2b6e470-bda4-40a2-8770-07048fa4af69.jpg'
+      },
+      {
+        id: 6,
+        name: 'Джанан Муса',
+        position: 'Форвард',
+        number: 13,
+        age: 25,
+        height: '206 см',
+        weight: '95 кг',
+        description: 'Молодой боснийский форвард с большим потенциалом.',
+        photo: '/img/a6d9557a-3e56-46f8-92ba-7aa5081d65fc.jpg'
+      },
+      {
+        id: 7,
+        name: 'Гершон Ябуселе',
+        position: 'Форвард',
+        number: 28,
+        age: 28,
+        height: '201 см',
+        weight: '122 кг',
+        description: 'Французский форвард с сильным телосложением.',
+        photo: '/img/297a36ac-b87e-42ff-a0d5-6b75736560a1.jpg'
       }
     ],
     coaches: [
@@ -189,7 +245,7 @@ const teamsData: Record<string, TeamData> = {
         name: 'Чус Матео',
         position: 'Главный тренер',
         experience: '3 года в Реал Мадрид',
-        photo: '/img/699e09d5-43db-4115-b35b-aef303638406.jpg',
+        photo: '/img/39416474-b050-4c7b-aa95-21c81d15286c.jpg',
         description: 'Молодой перспективный тренер, воспитанник клуба.'
       },
       {
@@ -197,7 +253,7 @@ const teamsData: Record<string, TeamData> = {
         name: 'Луис Касимиро',
         position: 'Помощник тренера',
         experience: '20 лет',
-        photo: '/img/699e09d5-43db-4115-b35b-aef303638406.jpg',
+        photo: '/img/3a60db96-3ed5-478b-8ae4-c803bd1b8be7.jpg',
         description: 'Опытный специалист с международным опытом.'
       }
     ]
@@ -227,51 +283,40 @@ const Team: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Header */}
       <div className="bg-black/50 backdrop-blur-sm border-b border-gray-800">
-        <div className="container mx-auto px-4 py-4">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="text-white hover:text-orange-400"
-          >
-            <Icon name="ArrowLeft" size={20} className="mr-2" />
-            Назад
-          </Button>
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Button 
+                onClick={() => navigate('/')}
+                variant="ghost"
+                className="text-white hover:text-orange-400"
+              >
+                <Icon name="ArrowLeft" size={24} />
+              </Button>
+              <h1 className="text-3xl font-bold text-white">{team.name}</h1>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        {/* Team Header */}
+        {/* Team Info */}
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <img 
-              src={team.logo} 
-              alt={team.name}
-              className="w-32 h-32 object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = `https://via.placeholder.com/128x128/FFA500/FFFFFF?text=${team.name.slice(0, 2)}`;
-              }}
-            />
-          </div>
-          <h1 className="text-4xl font-bold text-white mb-4">{team.name}</h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">{team.description}</p>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="bg-gray-800 rounded-lg px-4 py-2">
-              <span className="text-orange-400 font-semibold">Основан: </span>
-              <span className="text-white">{team.founded}</span>
+          <p className="text-gray-300 text-lg mb-4 max-w-3xl mx-auto">
+            {team.description}
+          </p>
+          <div className="flex justify-center space-x-8 text-sm">
+            <div>
+              <span className="text-gray-400">Основан:</span>
+              <div className="text-white font-bold">{team.founded}</div>
             </div>
           </div>
-
-          {/* Achievements */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-white mb-4">Достижения</h3>
-            <div className="flex flex-wrap justify-center gap-3">
+          
+          <div className="mt-6">
+            <h3 className="text-white text-lg font-semibold mb-3">Достижения:</h3>
+            <div className="flex flex-wrap justify-center gap-2">
               {team.achievements.map((achievement, index) => (
-                <span 
-                  key={index}
-                  className="bg-gradient-to-r from-orange-500 to-yellow-500 text-black px-4 py-2 rounded-full font-semibold"
-                >
+                <span key={index} className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm">
                   {achievement}
                 </span>
               ))}
@@ -282,7 +327,7 @@ const Team: React.FC = () => {
         {/* Players Grid */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-white text-center mb-8">Состав команды</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {team.players.map((player) => (
               <div key={player.id} className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-orange-500 transition-colors">
                 <div className="text-center mb-4">
