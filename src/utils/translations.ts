@@ -17,7 +17,7 @@ export const translations = {
     // About Section
     aboutTitle: "О нас",
     introduction: "Введение",
-    introText: "In this unique tournament, dedicated to the legacy of great basketball players, coaches and the world's best teams, they will fight for the championship title and incredible prizes! The Intercontinental Basketball League of Cups offers an exciting competition that brings together the best talents from all continents!",
+    introText: "Intercontinental Basketball League of Cups Inc. (IBLC) is an international basketball organization created to conduct prestigious tournaments with large prize pools. The main mission of the league is to unite the strongest professional basketball teams from around the world to participate in exciting international competitions. Key features: Elite level participants, Significant prize fund, International scale of competitions, High status tournaments. The league provides a platform for the confrontation of the best professional teams on the planet, allowing athletes to demonstrate their skills on the international stage and compete for impressive cash prizes.",
     
     openingMatch: "Opening Match",
     openingText: "For the first opening match, two of the best teams are invited:",
