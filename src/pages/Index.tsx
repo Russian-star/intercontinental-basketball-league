@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { getTranslation } from "@/utils/translations";
 
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState('en');
+  const navigate = useNavigate();
 
   const handleLanguageChange = (newLanguage: string) => {
     console.log('Changing language from', currentLanguage, 'to', newLanguage);
@@ -200,7 +202,10 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Lakers Card */}
-            <Card className="bg-gradient-to-br from-purple-900 to-yellow-500 border-none overflow-hidden hover:scale-105 transition-transform duration-300">
+            <Card 
+              className="bg-gradient-to-br from-purple-900 to-yellow-500 border-none overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onClick={() => navigate('/team/lakers')}
+            >
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="text-white">
@@ -232,7 +237,10 @@ const Index = () => {
             </Card>
 
             {/* Real Madrid Card */}
-            <Card className="bg-gradient-to-br from-white to-gray-100 text-black border-none overflow-hidden hover:scale-105 transition-transform duration-300">
+            <Card 
+              className="bg-gradient-to-br from-white to-gray-100 text-black border-none overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onClick={() => navigate('/team/real-madrid')}
+            >
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div>

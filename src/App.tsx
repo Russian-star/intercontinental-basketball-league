@@ -9,6 +9,7 @@ import Invest from "./pages/Invest";
 import Donate from "./pages/Donate";
 import Dashboard from "./pages/Dashboard";
 import LotteryDraw from "./pages/LotteryDraw";
+import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/donate" element={<Donate />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/lottery" element={<LotteryDraw />} />
+          <Route path="/team/:teamId" element={<Team />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
