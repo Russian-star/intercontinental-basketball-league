@@ -58,7 +58,7 @@ export const translations = {
     applicationNote: "* When submitting an application, you will be redirected to the registration form",
     
     // Investment Section
-    investButton: "Participate in this Project (Invest)",
+    investButton: "Invest",
     donateButton: "Donate to Youth Sports",
 
     // Contact Form Section  
@@ -147,7 +147,7 @@ export const translations = {
     applicationNote: "* При подаче заявки вы будете перенаправлены к форме регистрации",
     
     // Investment Section
-    investButton: "Участвовать в этом проекте (Инвестировать)",
+    investButton: "Инвестировать",
     donateButton: "Пожертвовать на детский спорт",
 
     // Contact Form Section
