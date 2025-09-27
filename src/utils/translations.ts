@@ -15,8 +15,8 @@ export const translations = {
     learnMore: "Learn More",
 
     // About Section
-    aboutTitle: "About Us",
-    introduction: "Introduction",
+    aboutTitle: "О нас",
+    introduction: "Введение",
     introText: "In this unique tournament, dedicated to the legacy of great basketball players, coaches and the world's best teams, they will fight for the championship title and incredible prizes! The Intercontinental Basketball League of Cups offers an exciting competition that brings together the best talents from all continents!",
     
     openingMatch: "Opening Match",
