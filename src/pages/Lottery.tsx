@@ -74,26 +74,7 @@ const Lottery: React.FC = () => {
           </div>
         </div>
 
-        {/* Prize Pool */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-white text-center mb-8">Призовой фонд</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {prizes.map((prize, index) => (
-              <Card key={index} className="bg-gray-800/50 backdrop-blur-sm border-gray-700 hover:border-orange-500 transition-colors">
-                <CardHeader className="text-center pb-4">
-                  <div className="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Icon name="Award" size={24} className="text-black" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white">{prize.place}</h3>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-3xl font-bold text-orange-400 mb-2">{prize.amount}</div>
-                  <p className="text-gray-300 text-sm">{prize.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+
 
         {/* Charity Section */}
         <div className="mb-12">

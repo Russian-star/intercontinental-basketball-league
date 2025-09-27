@@ -73,15 +73,93 @@ const Index = () => {
           </p>
           
           {/* Prize Pool */}
-          <div className="bg-gradient-to-r from-orange-500 to-gold-400 p-8 rounded-2xl mb-12 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-4 mb-4">
-              <Icon name="DollarSign" size={48} className="text-black" />
-              <div className="text-black">
+          <Button 
+            className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 p-8 rounded-2xl mb-12 max-w-2xl mx-auto block w-full h-auto shadow-2xl transform hover:scale-105 transition-all duration-300"
+            onClick={() => {
+              const prizeSection = document.createElement('div');
+              prizeSection.innerHTML = `
+                <div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="this.remove()">
+                  <div class="bg-gray-900 rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+                    <div class="flex justify-between items-center mb-6">
+                      <h2 class="text-3xl font-bold text-white">Призовой фонд</h2>
+                      <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">🏆</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">1-е место</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$10,000,000</div>
+                          <p class="text-gray-300 text-sm">Главный приз турнира</p>
+                        </div>
+                      </div>
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">🥈</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">2-е место</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$3,000,000</div>
+                          <p class="text-gray-300 text-sm">Приз за второе место</p>
+                        </div>
+                      </div>
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">🥉</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">3-е место</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$1,000,000</div>
+                          <p class="text-gray-300 text-sm">Приз за третье место</p>
+                        </div>
+                      </div>
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">🏀</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">Slam Dunk 1-е</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$1,000,000</div>
+                          <p class="text-gray-300 text-sm">Конкурс слэм-данков</p>
+                        </div>
+                      </div>
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">⭐</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">Slam Dunk 2-е</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$500,000</div>
+                          <p class="text-gray-300 text-sm">Конкурс слэм-данков</p>
+                        </div>
+                      </div>
+                      <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-orange-500 transition-colors rounded-xl p-6">
+                        <div class="text-center">
+                          <div class="bg-gradient-to-r from-orange-500 to-gold-400 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-black font-bold">🎯</span>
+                          </div>
+                          <h3 class="text-xl font-bold text-white mb-2">Участие</h3>
+                          <div class="text-3xl font-bold text-orange-400 mb-2">$50,000</div>
+                          <p class="text-gray-300 text-sm">Гарантированные призы</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+              document.body.appendChild(prizeSection);
+            }}
+          >
+            <div className="flex items-center justify-center space-x-4 mb-4 text-black">
+              <Icon name="DollarSign" size={48} />
+              <div>
                 <div className="text-3xl font-bold">$13,000,000</div>
                 <div className="text-lg font-semibold">{t('prizePool')}</div>
               </div>
             </div>
-          </div>
+          </Button>
 
 
 
