@@ -15,6 +15,15 @@ interface Player {
   photo: string;
 }
 
+interface Coach {
+  id: number;
+  name: string;
+  position: string;
+  experience: string;
+  photo: string;
+  description: string;
+}
+
 interface TeamData {
   id: string;
   name: string;
@@ -23,6 +32,7 @@ interface TeamData {
   founded: string;
   achievements: string[];
   players: Player[];
+  coaches: Coach[];
 }
 
 const teamsData: Record<string, TeamData> = {
@@ -43,7 +53,7 @@ const teamsData: Record<string, TeamData> = {
         height: '206 см',
         weight: '113 кг',
         description: 'Четырехкратный чемпион НБА, один из величайших игроков всех времен.',
-        photo: '/players/lebron.jpg'
+        photo: '/img/278ce9d3-1d4e-4443-bba1-225dfb3bf940.jpg'
       },
       {
         id: 2,
@@ -54,7 +64,7 @@ const teamsData: Record<string, TeamData> = {
         height: '208 см',
         weight: '115 кг',
         description: 'Доминирующий в краске игрок с отличными защитными навыками.',
-        photo: '/players/davis.jpg'
+        photo: '/img/ac587565-a5c0-4468-b04d-fd5168edc273.jpg'
       },
       {
         id: 3,
@@ -65,7 +75,7 @@ const teamsData: Record<string, TeamData> = {
         height: '196 см',
         weight: '89 кг',
         description: 'Молодой талантливый защитник с отличным броском.',
-        photo: '/players/reaves.jpg'
+        photo: '/img/49ae587d-4ea3-43f0-ace1-bc49608f849c.jpg'
       },
       {
         id: 4,
@@ -76,7 +86,7 @@ const teamsData: Record<string, TeamData> = {
         height: '193 см',
         weight: '88 кг',
         description: 'Опытный разыгрывающий с отличным трехочковым броском.',
-        photo: '/players/russell.jpg'
+        photo: '/img/278ce9d3-1d4e-4443-bba1-225dfb3bf940.jpg'
       },
       {
         id: 5,
@@ -87,7 +97,25 @@ const teamsData: Record<string, TeamData> = {
         height: '203 см',
         weight: '104 кг',
         description: 'Универсальный форвард с хорошими атакующими навыками.',
-        photo: '/players/hachimura.jpg'
+        photo: '/img/ac587565-a5c0-4468-b04d-fd5168edc273.jpg'
+      }
+    ],
+    coaches: [
+      {
+        id: 1,
+        name: 'Дарвин Хэм',
+        position: 'Главный тренер',
+        experience: '2 года в НБА',
+        photo: '/img/440eb061-6c1e-4e5b-9c92-e921807bd6df.jpg',
+        description: 'Опытный тренер с большим игровым опытом в НБА.'
+      },
+      {
+        id: 2,
+        name: 'Фил Хэнди',
+        position: 'Помощник тренера',
+        experience: '15 лет',
+        photo: '/img/440eb061-6c1e-4e5b-9c92-e921807bd6df.jpg',
+        description: 'Специалист по развитию игроков и тактической подготовке.'
       }
     ]
   },
@@ -108,7 +136,7 @@ const teamsData: Record<string, TeamData> = {
         height: '208 см',
         weight: '118 кг',
         description: 'Молодой перспективный центровой с отличной физикой.',
-        photo: '/players/kauffmann.jpg'
+        photo: '/img/a55e998d-b6e8-461e-a33b-47ec82f21b79.jpg'
       },
       {
         id: 2,
@@ -119,7 +147,7 @@ const teamsData: Record<string, TeamData> = {
         height: '190 см',
         weight: '83 кг',
         description: 'Капитан команды, легенда Реал Мадрида.',
-        photo: '/players/llull.jpg'
+        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
       },
       {
         id: 3,
@@ -130,7 +158,7 @@ const teamsData: Record<string, TeamData> = {
         height: '221 см',
         weight: '118 кг',
         description: 'Доминирующий центровой, один из самых высоких игроков.',
-        photo: '/players/tavares.jpg'
+        photo: '/img/a55e998d-b6e8-461e-a33b-47ec82f21b79.jpg'
       },
       {
         id: 4,
@@ -141,7 +169,7 @@ const teamsData: Record<string, TeamData> = {
         height: '198 см',
         weight: '104 кг',
         description: 'Аргентинский форвард с отличными атакующими качествами.',
-        photo: '/players/deck.jpg'
+        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
       },
       {
         id: 5,
@@ -152,7 +180,25 @@ const teamsData: Record<string, TeamData> = {
         height: '203 см',
         weight: '102 кг',
         description: 'Опытный европейский форвард с хорошим броском.',
-        photo: '/players/hezonja.jpg'
+        photo: '/img/af935180-7ab1-4a46-a91a-143211b4370a.jpg'
+      }
+    ],
+    coaches: [
+      {
+        id: 1,
+        name: 'Чус Матео',
+        position: 'Главный тренер',
+        experience: '3 года в Реал Мадрид',
+        photo: '/img/699e09d5-43db-4115-b35b-aef303638406.jpg',
+        description: 'Молодой перспективный тренер, воспитанник клуба.'
+      },
+      {
+        id: 2,
+        name: 'Луис Касимиро',
+        position: 'Помощник тренера',
+        experience: '20 лет',
+        photo: '/img/699e09d5-43db-4115-b35b-aef303638406.jpg',
+        description: 'Опытный специалист с международным опытом.'
       }
     ]
   }
@@ -273,6 +319,37 @@ const Team: React.FC = () => {
 
                 <p className="text-gray-300 text-sm mt-4 leading-relaxed">
                   {player.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Coaching Staff */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-white text-center mb-8">Тренерский состав</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {team.coaches.map((coach) => (
+              <div key={coach.id} className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-colors">
+                <div className="flex items-center mb-4">
+                  <img 
+                    src={coach.photo} 
+                    alt={coach.name}
+                    className="w-20 h-20 rounded-full mr-4 object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://via.placeholder.com/80x80/3B82F6/FFFFFF?text=${coach.name.split(' ').map(n => n[0]).join('')}`;
+                    }}
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold text-white">{coach.name}</h3>
+                    <p className="text-blue-400 font-semibold">{coach.position}</p>
+                    <p className="text-gray-400 text-sm">Опыт: {coach.experience}</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {coach.description}
                 </p>
               </div>
             ))}
