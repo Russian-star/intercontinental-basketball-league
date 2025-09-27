@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ContactForm from "@/components/ContactForm";
-import LotteryPrizeWidget from "@/components/LotteryPrizeWidget";
 import { getTranslation } from "@/utils/translations";
 
 const Index = () => {
@@ -82,10 +81,7 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Lottery Prize Widget */}
-          <div className="mb-12 max-w-md mx-auto">
-            <LotteryPrizeWidget showParticipants={false} />
-          </div>
+
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
