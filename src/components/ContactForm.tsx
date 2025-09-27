@@ -52,7 +52,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
             {t('contactFormSuccess')}
           </h3>
           <p className="text-green-400">
-            Мы свяжемся с вами в ближайшее время!
+            {t('contactFormFollowUp')}
           </p>
         </CardContent>
       </Card>
@@ -85,7 +85,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-colors"
-                placeholder="Введите ваше имя"
+                placeholder={t('contactFormNamePlaceholder')}
               />
             </div>
             
@@ -101,7 +101,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-colors"
-                placeholder="your@email.com"
+                placeholder={t('contactFormEmailPlaceholder')}
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
               onChange={handleChange}
               required
               className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-colors"
-              placeholder="Тема вашего сообщения"
+              placeholder={t('contactFormSubjectPlaceholder')}
             />
           </div>
           
@@ -134,7 +134,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
               required
               rows={5}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-colors resize-none"
-              placeholder="Напишите ваше сообщение..."
+              placeholder={t('contactFormMessagePlaceholder')}
             />
           </div>
           
@@ -146,7 +146,7 @@ const ContactForm = ({ t }: ContactFormProps) => {
             {isSubmitting ? (
               <div className="flex items-center justify-center space-x-2">
                 <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                <span>Отправка...</span>
+                <span>{t('contactFormSending')}</span>
               </div>
             ) : (
               <div className="flex items-center justify-center space-x-2">

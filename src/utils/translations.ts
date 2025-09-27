@@ -70,6 +70,12 @@ export const translations = {
     contactFormMessage: "Message",
     contactFormSend: "Send Message",
     contactFormSuccess: "Thank you! Your message has been sent successfully.",
+    contactFormNamePlaceholder: "Enter your name",
+    contactFormEmailPlaceholder: "your@email.com",
+    contactFormSubjectPlaceholder: "Subject of your message",
+    contactFormMessagePlaceholder: "Write your message...",
+    contactFormSending: "Sending...",
+    contactFormFollowUp: "We will contact you soon!",
 
     // Contact Section
     contactTitle: "Contact",
@@ -153,6 +159,12 @@ export const translations = {
     contactFormMessage: "Сообщение",
     contactFormSend: "Отправить сообщение",
     contactFormSuccess: "Спасибо! Ваше сообщение было успешно отправлено.",
+    contactFormNamePlaceholder: "Введите ваше имя",
+    contactFormEmailPlaceholder: "your@email.com",
+    contactFormSubjectPlaceholder: "Тема вашего сообщения",
+    contactFormMessagePlaceholder: "Напишите ваше сообщение...",
+    contactFormSending: "Отправка...",
+    contactFormFollowUp: "Мы свяжемся с вами в ближайшее время!",
 
     // Contact Section
     contactTitle: "Контакты",
@@ -232,6 +244,12 @@ export const translations = {
     contactFormMessage: "Mensaje",
     contactFormSend: "Enviar Mensaje",
     contactFormSuccess: "¡Gracias! Tu mensaje ha sido enviado exitosamente.",
+    contactFormNamePlaceholder: "Ingresa tu nombre",
+    contactFormEmailPlaceholder: "tu@email.com",
+    contactFormSubjectPlaceholder: "Asunto de tu mensaje",
+    contactFormMessagePlaceholder: "Escribe tu mensaje...",
+    contactFormSending: "Enviando...",
+    contactFormFollowUp: "¡Nos pondremos en contacto contigo pronto!",
 
     // Contact Section
     contactTitle: "Contacto",
