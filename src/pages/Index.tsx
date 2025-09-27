@@ -85,16 +85,7 @@ const Index = () => {
 
 
 
-          <div className="flex justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-orange-500 to-gold-400 hover:from-orange-600 hover:to-gold-500 text-black font-bold text-lg px-12 py-4 rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-300"
-              onClick={() => window.location.href = '/lottery'}
-            >
-              <Icon name="Trophy" size={20} className="mr-2" />
-              Розыгрыш
-            </Button>
-          </div>
+
         </div>
       </section>
 
