@@ -15,8 +15,7 @@ export const translations = {
     learnMore: "Learn More",
 
     // About Section
-    aboutTitle: "О нас",
-    introduction: "Введение",
+    aboutTitle: "About Us",
     introText: "Intercontinental Basketball League of Cups Inc. (IBLC) is an international basketball organization created to conduct prestigious tournaments with large prize pools. The main mission of the league is to unite the strongest professional basketball teams from around the world to participate in exciting international competitions. Key features: Elite level participants, Significant prize fund, International scale of competitions, High status tournaments. The league provides a platform for the confrontation of the best professional teams on the planet, allowing athletes to demonstrate their skills on the international stage and compete for impressive cash prizes.",
     
     openingMatch: "Opening Match",
@@ -105,7 +104,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "О нас",
-    introduction: "Введение",
+
     introText: "Intercontinental Basketball League of Cups Inc. (IBLC) — международная баскетбольная организация, созданная для проведения престижных турниров с крупным призовым фондом. Основная миссия лиги заключается в объединении сильнейших профессиональных баскетбольных команд со всего мира для участия в захватывающих международных соревнованиях. Ключевые особенности: Элитный уровень участников, Значительный призовой фонд, Международный масштаб соревнований, Высокий статус турниров. Лига предоставляет площадку для противостояния лучших профессиональных команд планеты, позволяя спортсменам продемонстрировать своё мастерство на международной арене и побороться за внушительные денежные призы.",
     
     openingMatch: "Матч открытия",
@@ -194,7 +193,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "Sobre Nosotros",
-    introduction: "Introducción",
+
     introText: "En este torneo único, dedicado al legado de grandes jugadores de baloncesto, entrenadores y los mejores equipos del mundo, ¡lucharán por el título de campeón y premios increíbles! La Liga Intercontinental de Copas de Baloncesto ofrece una competición emocionante que reúne a los mejores talentos de todos los continentes!",
     
     openingMatch: "Partido de Apertura",
@@ -279,7 +278,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "À Propos",
-    introduction: "Introduction",
+
     introText: "Dans ce tournoi unique, dédié à l'héritage des grands joueurs de basketball, entraîneurs et meilleures équipes du monde, ils se battront pour le titre de champion et des prix incroyables ! La Ligue Intercontinentale des Coupes de Basketball offre une compétition passionnante qui rassemble les meilleurs talents de tous les continents !",
     
     openingMatch: "Match d'Ouverture",
@@ -348,7 +347,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "Über Uns",
-    introduction: "Einführung",
+
     introText: "In diesem einzigartigen Turnier, das dem Erbe großer Basketballspieler, Trainer und der weltbesten Teams gewidmet ist, kämpfen sie um den Meistertitel und unglaubliche Preise! Die Interkontinentale Basketball Liga der Pokale bietet einen aufregenden Wettbewerb, der die besten Talente aller Kontinente vereint!",
     
     openingMatch: "Eröffnungsspiel",
@@ -417,7 +416,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "关于我们",
-    introduction: "介绍",
+
     introText: "在这个独特的锦标赛中，致力于伟大篮球运动员、教练和世界最佳球队的传承，他们将为冠军头衔和令人难以置信的奖品而战！洲际篮球杯联赛提供激动人心的竞争，汇集了来自各大洲的最佳人才！",
     
     openingMatch: "开幕赛",
@@ -486,7 +485,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "私たちについて",
-    introduction: "紹介",
+
     introText: "偉大なバスケットボール選手、コーチ、そして世界最高のチームの遺産に捧げられたこのユニークなトーナメントで、彼らはチャンピオンのタイトルと信じられない賞品のために戦います！大陸間バスケットボールカップリーグは、すべての大陸から最高の才能を結集したエキサイティングな競技を提供します！",
     
     openingMatch: "開幕戦",
@@ -555,7 +554,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "Sobre Nós",
-    introduction: "Introdução",
+
     introText: "Neste torneio único, dedicado ao legado de grandes jogadores de basquete, técnicos e as melhores equipes do mundo, eles lutarão pelo título de campeão e prêmios incríveis! A Liga Intercontinental de Copas de Basquete oferece uma competição emocionante que reúne os melhores talentos de todos os continentes!",
     
     openingMatch: "Jogo de Abertura",
@@ -624,7 +623,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "Chi Siamo",
-    introduction: "Introduzione",
+
     introText: "In questo torneo unico, dedicato al patrimonio di grandi giocatori di basket, allenatori e le migliori squadre del mondo, lotteranno per il titolo di campione e premi incredibili! La Lega Intercontinentale delle Coppe di Basket offre una competizione emozionante che riunisce i migliori talenti di tutti i continenti!",
     
     openingMatch: "Partita di Apertura",
@@ -693,7 +692,7 @@ export const translations = {
 
     // About Section
     aboutTitle: "من نحن",
-    introduction: "مقدمة",
+
     introText: "في هذه البطولة الفريدة، المكرسة لإرث لاعبي كرة السلة العظماء والمدربين وأفضل الفرق في العالم، سيقاتلون من أجل لقب البطولة والجوائز المذهلة! يقدم الدوري القاري لكؤوس كرة السلة منافسة مثيرة تجمع أفضل المواهب من جميع القارات!",
     
     openingMatch: "مباراة الافتتاح",
